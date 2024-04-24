@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>OOP Library Management System - Wireframe</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1>OOP Library Management System</h1>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#catalog">Catalog</a></li>
+          <li><a href="#user-dashboard">User Dashboard</a></li>
+          <li><a href="#admin-panel">Admin Panel</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="home">
+        <h2>Welcome to the Library</h2>
+        <p>Hello, This is OOP Library Management Homepage</p>
+      </section>
+
+      <section id="catalog">
+        <h2>Library Catalog</h2>
+        <p>Humanities</p>
+        <p>psychologys</p>
+        <p>Books for children</p>
+        <div>
+          <label for="search">Search Books:</label>
+          <input
+            type="text"
+            id="search"
+            name="search"
+            placeholder="Enter book title"
+          />
+          <button onclick="searchBooks()">Search</button>
+        </div>
+
+        <!-- Book listing container -->
+        <div id="book-list">
+          <!-- Placeholder for book listings -->
+        </div>
+
+        <!-- Your existing content -->
+        <!-- ... -->
+
+        <script>
+          // Sample book data (for demonstration)
+          var libraryBooks = [
+            {
+              title: "The Great Gatsby",
+              author: "F. Scott Fitzgerald",
+              ISBN: "978-0743273565",
+              available: true,
+            },
+            {
+              title: "To Kill a Mockingbird",
+              author: "Harper Lee",
+              ISBN: "978-0061120084",
+              available: false,
+            },
+            // Add more book data here...
+          ];
+
+          // Function to display book listings
+          function displayBooks(books) {
+            var bookList = document.getElementById("book-list");
+            bookList.innerHTML = "";
+
+            if (books.length === 0) {
+              bookList.innerHTML = "No matching books found.";
+            } else {
+              books.forEach(function (book) {
+                var bookInfo = document.createElement("div");
+                bookInfo.innerHTML = `<strong>${book.title}</strong> by ${
+                  book.author
+                } (ISBN: ${book.ISBN}) - Available: ${
+                  book.available ? "Yes" : "No"
+                }`;
+                bookList.appendChild(bookInfo);
+              });
+            }
+          }
+
+          // Function to search for books
+          function searchBooks() {
+            var searchTerm = document
+              .getElementById("search")
+              .value.toLowerCase();
+            var searchResults = libraryBooks.filter(function (book) {
+              return book.title.toLowerCase().includes(searchTerm);
+            });
+            displayBooks(searchResults);
+          }
+
+          // Initial display of all books (on page load)
+          displayBooks(libraryBooks);
+        </script>
+      </section>
+
+      <section id="user-dashboard">
+        <h2>User Dashboard</h2>
+        <a href="Index2.html"
+          >Book Review &lt;Guns, Germs, And Steel &gt;
+        </a>
+      </section>
+
+      <section id="admin-panel">
+        <h2>Admin Panel</h2>
+        <p>Taeseok Jeong</p>
+        <p>Sophia</p>
+        <p>Donald Trump</p>
+        <p>Elon Musk</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2023 OOP Library Management System</p>
+    </footer>
+ 
+  
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Login</title>
+      <style>
+        /* Add your CSS styles here */
+        /* ... */
+      </style>
+      <!-- Your existing content -->
+
+      <!-- ... -->
+
+      <!-- New "Login" section -->
+      <section id="login">
+        <h2>Login</h2>
+        <div>
+          <label for="username">Username:</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Enter your username"
+          />
+        </div>
+        <div>
+          <label for="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+          />
+        </div>
+        <div>
+          <button onclick="login()">Login</button>
+        </div>
+        <div id="login-status"></div>
+      </section>
+
+      <!-- Your existing content -->
+      <!-- ... -->
+
+      <script>
+        // JavaScript function for login
+        function login() {
+          var username = document.getElementById("username").value;
+          var password = document.getElementById("password").value;
+
+          // Example: Check login credentials (for demonstration purposes, using hard-coded values)
+          if (username === "user" && password === "password") {
+            var loginStatus = document.getElementById("login-status");
+            loginStatus.innerHTML = "Login Successful!";
+            // Redirect to another page after successful login (for example, 'dashboard.html')
+            // window.location.href = "dashboard.html";
+          } else {
+            var loginStatus = document.getElementById("login-status");
+            loginStatus.innerHTML =
+              "Invalid username or password. Please try again.";
+          }
+        }
+      </script>
+    </body>
+</html>
